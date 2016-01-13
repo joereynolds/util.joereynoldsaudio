@@ -1,0 +1,88 @@
+
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<h1>Flex Tabs</h1>
+
+<div class="tabs-wrapper">
+  <div class="tabs">
+      <div class="tab fatty" data-target="css">CSS</div>
+      <div class="tab fatty" data-target="html">HTML</div>
+      <div class="tab fatty" data-target="php">PHP</div>
+      <div class="tab fatty" data-target="scheme">Scheme</div>
+      <div class="tab fatty" data-target="python">Python</div>
+  </div>
+
+  <div class="content-holder fatty">
+    <div class="tab-content" data-hit="css">
+      CSS content
+    </div>
+    <div class="tab-content" data-hit="html">
+      HTML content
+    </div>
+    <div class="tab-content" data-hit="php">
+      PHP stuff
+    </div>
+    <div class="tab-content" data-hit="scheme">
+      Scheme stuff
+    </div>
+    <div class="tab-content" data-hit="python">
+      Python stuff
+    </div>
+  </div>
+</div>
+
+
+<style>
+body {
+  font-family: arial;
+  width : 800px;
+  margin:auto;
+}
+.tabs {
+  display : flex;
+  text-align: center;
+  border:1px solid black;
+  border-radius : 5px;
+}
+.tab {
+  flex: 1;
+  transition: background-color .5s;
+  background-color: white;
+}
+.tab:hover {
+  background: #cbb;
+  cursor: pointer;
+}
+.tab + .tab {
+  border-left: 1px solid black;
+}
+.content-holder {
+  margin-top :10px;
+  border:1px solid black;
+  border-radius : 5px;
+}
+.tab-content {
+  display: none;
+}
+.fatty{
+  padding:10px;
+}
+h1 {
+  /*animation: rainbow .1s infinite alternate linear;*/
+}
+
+@keyframes rainbow {
+  0%   {color : red;}
+  10%  {color : pink;}
+  20%  {color : blue;}
+  30%  {color : green}
+  100% {color : yellow;}
+}
+</style>
+
+<script>
+  $('.tab').click(function(){
+      $('.tab-content').hide();
+      $('.tab-content[data-hit=' + $(this).data('target') + ']').show();
+  });
+</script>
