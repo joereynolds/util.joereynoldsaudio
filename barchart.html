@@ -1,6 +1,9 @@
 <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
 
-<h1>Barcharts yo</h1>
+<h1>Barcharts</h1>
+<div class="barchart" data-chartdata="[32, 25, 79, 200, 56, 89, 100, 24]"></div>
+<div class="barchart" data-chartdata="[2, 5, 5, 9,  24]"></div>
+<div class="barchart" data-chartdata="[76, 85, 9, 24]"></div>
 <div class="barchart" data-chartdata="[32, 25, 79, 200, 56, 89, 100, 24]"></div>
 
 <style>
@@ -58,15 +61,19 @@ var normalise = function(array) {
     }
     return normalised;
 };
-var data = $('.barchart').data('chartdata');
-var normalised = normalise(data);
 
 //Set the height of each bar to be the chartdata
-$.each(normalised, function(index, value){
-        var bar = '<div class="bar" data-label="' + data[index] +'"></div>';
-        $('.barchart').append(bar);
-        $.each($('.bar:eq(' + index + ')'), function(){
-                $(this).height(value * 100);
-                })
+$('.barchart').each(function(){
+        var that = this;
+        var data = $(that).data('chartdata');
+        var normalised = normalise(data);
+        $.each(normalised, function(index, value){
+            var bar = '<div class="bar" data-label="' + data[index] +'"></div>';
+            $(that).append(bar);
+            $.each($('.bar:eq(' + index + ')'), function(){
+                    $(this).height(value * 100);
+                    });
+                });
             });
+
 </script>
