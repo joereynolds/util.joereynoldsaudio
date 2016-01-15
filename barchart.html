@@ -5,6 +5,7 @@
 <div class="barchart" data-chartdata="[2, 5, 5, 9,  24]"></div>
 <div class="barchart" data-chartdata="[76, 85, 9, 24]"></div>
 <div class="barchart" data-chartdata="[32, 25, 79, 200, 56, 89, 100, 24]"></div>
+<div class="barchart" data-chartdata="[1, 2, 3, 4, 5, 6, 7, 8]"></div>
 
 <style>
 body {
@@ -64,16 +65,16 @@ var normalise = function(array) {
 
 //Set the height of each bar to be the chartdata
 $('.barchart').each(function(){
-        var that = this;
-        var data = $(that).data('chartdata');
-        var normalised = normalise(data);
-        $.each(normalised, function(index, value){
-            var bar = '<div class="bar" data-label="' + data[index] +'"></div>';
-            $(that).append(bar);
-            $.each($('.bar:eq(' + index + ')'), function(){
-                    $(this).height(value * 100);
-                    });
-                });
-            });
+    var that = this;
+    var data = $(this).data('chartdata');
+    var normalised = normalise(data);
+    $.each(normalised, function(index, value){
+        var bar = '<div class="bar" data-label="' + data[index] +'"></div>';
+        $(that).append(bar);
+        $.each($(that).find('.bar:eq(' + index + ')'), function(){
+            $(this).height(value * 100);
+        });
+    });
+});
 
 </script>
