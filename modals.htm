@@ -1,0 +1,54 @@
+<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<div><a href='#' data-modal="normal-modal">Open modal</a></div>
+<div><a href='#' data-modal="other-modal">Open other modal</a></div>
+
+<div class="modal" data-id="normal-modal">
+    <div class="inner">
+      <h1>This is a modal</h1>
+      <a href='#' class="close-modal">Close modal</a>
+    </div>
+</div>
+
+<div class="modal" data-id="other-modal">
+    <div class="inner other">
+      <h1>This is a different modal</h1>
+      <a href='#' class="close-modal">Close modal</a>
+    </div>
+</div>
+
+<style>
+body {
+  font-family: arial;
+}
+.modal {
+  display : none;
+  height : 100vh;
+  width  : 100vw;
+  background : rgba(0,0,0,.1);
+  position: absolute;
+  top : 0;
+  left : 0;
+}
+.inner {
+  background: #fff;
+  padding : 20px;
+  margin : auto; /*for some reason centers flex content???*/
+}
+.open {
+  display : flex;
+}
+.other {
+  background : pink;
+}
+</style>
+
+<script>
+$('.close-modal').click(function(){
+  $(this).parent().parent().removeClass('open');
+});
+
+$('[data-modal]').click(function(){
+  $('.modal[data-id=' + $(this).data('modal') +']').toggleClass('open');
+});
+</script>
