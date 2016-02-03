@@ -1,0 +1,1 @@
+- Photo generator. Generates jpg/png/whatever that is a user specified filesize. Useful for testing upload scripts against
