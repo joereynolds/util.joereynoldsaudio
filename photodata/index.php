@@ -23,7 +23,7 @@
             <?php $file = "images/$file";?>
             <section>
                 <?php $data = (exif_read_data($file, 0, true));?>
-                <h1><?php echo $data['FILE']['FileName'];?></h1>
+                <h1><?php echo htmlspecialchars($data['FILE']['FileName']);?></h1>
                 <a href="<?php echo $file?>">
                     <img src="<?php echo $file?>">
                 </a>
