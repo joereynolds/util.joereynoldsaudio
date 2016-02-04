@@ -21,6 +21,14 @@ class Resty {
     {
         $max_filesize = 2000000;
         if ($_FILES) {
+            //Note that we're limiting to 50 files in the
+            //images directory. There's an extra 2 added on
+            //because of '.' and '..' on unix systems, dumb.
+            if (count(scandir('images')) >=52){
+                die('The server has reached its upload limit.
+                     Delete a few files and try again.'
+                );
+            }
             if ($_FILES['file']['size'] > $max_filesize) {
                 return;
             }
