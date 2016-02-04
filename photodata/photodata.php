@@ -2,6 +2,18 @@
 
 class Resty {
 
+    function __construct(){
+        $this->create_image_directory();
+        $this->call();
+    }
+
+    function create_image_directory()
+    {
+        $directory = 'images';
+        if (!file_exists($directory)) {
+            mkdir($directory);
+        }
+    }
     /**
      * Upload the file to the images directory
      */
@@ -37,7 +49,5 @@ class Resty {
     }
 }
 
-
 $r = new Resty();
-$r->call();
 ?>

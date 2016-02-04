@@ -1,4 +1,18 @@
 $(document).ready(function(){
+
+    $('form').submit(function(){
+        //make sure to not exceed 2mb 
+        if ($('[type=file]')[0].files[0].size >= 2000000) {
+            swal({
+                title: "Filesize exceeded",
+                text: "This file is greater than the 2 megabyte size limit",
+                type: "warning"
+            });
+            return false;
+        }
+
+    });
+
     $('.delete-button').click(function(){
         var fileName = $(this).parent().find('h1').text();
         swal({
