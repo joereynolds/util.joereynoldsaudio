@@ -43,13 +43,13 @@ img {
   margin-bottom : 25px;
 }
 .delete-button {
-  border : 1px solid red;   
+  border : 1px solid red;
   color : red;
   text-align : center;
   padding : 15px;
   border-radius : 5px;
   background : white;
-  transition : background .5s , color .5s ,  
+  transition : background .5s , color .5s;
 }
 .delete-button:hover{
   background : red;
