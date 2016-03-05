@@ -15,6 +15,7 @@
     <form action="photodata.php" method="POST" enctype="multipart/form-data">
         <input name="file" type="file"/>
         <input type="submit">
+        <small>Accepted file formats : .jpg</small>
     </form>
 
     <div class="image-container">
