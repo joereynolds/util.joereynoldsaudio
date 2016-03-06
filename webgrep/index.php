@@ -59,6 +59,12 @@ $matches = $grepper->getMatches($url, $searchTerm);
           </div>
           <?php endforeach;?>
       </section>
+
+      <section class="debug">
+        <h1>Debug info</h1>
+        <div>Visited links : <?php var_dump($grepper->visitedLinks); ?></div>
+        <div>Matches : <?php var_dump($grepper->matches);?></div>
+      </section>
     </main>
 </body>
 </html>

@@ -64,6 +64,12 @@ input[type="submit"]:hover {
     color : red;
     text-decoration : underline;
 }
+.debug {
+    border : 1px solid black;
+    padding : 25px;
+    background: #f3f3f3;
+    font-family : monospace;
+}
 
 @keyframes rainbow {
   0%   {
