@@ -1,11 +1,18 @@
 <?php
 require('webgrep.php');
+
+$grepper = new Grepper;
+$searchTerm = $_POST['string'];
+$url = $_POST['url'];
+$matches = $grepper->getMatches($url, $searchTerm);
 ?>
 
 <html>
     <head>
         <title>Grep the world!</title>
         <link rel="stylesheet" href="style.css">
+        <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+        <script src="jquery.highlight-5.js"></script>
     </head>
 <body>
     <main>
@@ -28,27 +35,35 @@ require('webgrep.php');
         </section>
 
       <section>
-        <h2>Fake results</h2>
+        <h2>Results</h2>
         <table>
           <tr>
-
             <th>Numbrero</th>
             <th>URL</th>
             <th>Matches</th>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>www.example.com/blarg</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>www.example.com/asdasdblarg</td>
-            <td>5</td>
-          </tr>
-
+        <tr>
+          <td>1</td>
+          <td><?php echo $url ?></td>
+          <td><?php echo count($matches)?>
+          </td>
+        </tr>
         </table>
+
+      </section>
+      <section class="results">
+        <h2>Matches for <?php echo $url?></h2>
+          <?php foreach($matches as $match): ?>
+          <div class="match">
+            <?php echo $grepper->getContextOfMatch($match[1]);?>
+          </div>
+          <?php endforeach;?>
       </section>
     </main>
 </body>
 </html>
+
+<script>
+    var searchTerm = "<?php echo $_POST['string']; ?>"; //gross
+    $('.results').highlight(searchTerm);
+</script>

@@ -52,6 +52,18 @@ input[type="submit"] {
 input[type="submit"]:hover {
   animation: rainbow .1s infinite alternate linear;
 }
+.match {
+    display : inline-block;
+    padding : 5px;
+    border : 1px solid #ccc;
+}
+.match + .match {
+    margin-top : 25px;
+}
+.highlight {
+    color : red;
+    text-decoration : underline;
+}
 
 @keyframes rainbow {
   0%   {

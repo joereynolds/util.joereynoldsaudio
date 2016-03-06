@@ -1,6 +1,6 @@
 <?php
-error_reporting(-1);
-ini_set('display_errors', 'On');
+//error_reporting(-1);
+//ini_set('display_errors', 'On');
 
 class Grepper {
 
@@ -29,18 +29,18 @@ class Grepper {
     }
 
     /**
-     * @STUB
-     * Returns all matches of a string rather than just one.
+     * Returns all the matches of a string.
      */
-    function getMatches($html, $string) {
+    function getMatches($url, $string) {
         $matches = [];
-        while (($lastPosition = strpos($html, $string)) !== false) {
-            $matches[] = $lastPosition;
-            $lastPosition = $lastPosition + strlen($string);
-        }
-        return $matches;
+        $html = $this->getHTML($url);
+        preg_match_all("/$string/", $html, $matches, PREG_OFFSET_CAPTURE);
+        return $matches[0];
     }
 
+    /**
+     * Returns the position of the first match it sees
+     */
     function getMatch($html, $string) {
         $pos = strpos($html, $string);
 
@@ -48,14 +48,5 @@ class Grepper {
             return $pos;
         }
     }
-
 }
 
-if ($_POST) {
-    $url = $_POST['url'];
-    $searchTerm = $_POST['string'];
-    $gr = new Grepper();
-    $html = $gr->getHTML($url);
-
-    echo '<h1>'. $gr->GetContextOfMatch($gr->getMatch($html, $searchTerm)) . '</h1>';
-}
