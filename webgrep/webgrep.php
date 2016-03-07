@@ -13,9 +13,18 @@ class Grepper {
     }
 
     /**
+     * Only load the file if it hasn't been already
+     */
+    private function loadHTMLFromFile($url) {
+        if (empty($this->html)) {
+            $this->dom->loadHTMLFile($url);
+        }
+    }
+    /**
      * Gathers links to get text from
      */
     function gatherLinks($url) {
+        $this->loadHTMLFromFile($url);
         $this->links = $this->dom->getElementsByTagName('a');
     }
 
@@ -23,7 +32,7 @@ class Grepper {
      * Returns a DOMDocument of the HTML string.
      */
     function getHTML($url) {
-        $this->dom->loadHTMLFile($url);
+        $this->loadHTMLFromFile($url);
         $this->html = $this->dom->textContent;
         return $this->html;
     }

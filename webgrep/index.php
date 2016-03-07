@@ -5,6 +5,7 @@ $grepper = new Grepper;
 $searchTerm = $_POST['string'];
 $url = $_POST['url'];
 $matches = $grepper->getMatches($url, $searchTerm);
+$grepper->gatherLinks($url);
 ?>
 
 <html>
@@ -51,6 +52,7 @@ $matches = $grepper->getMatches($url, $searchTerm);
         </table>
 
       </section>
+
       <section class="results">
         <h2>Matches for <?php echo $url?></h2>
           <?php foreach($matches as $match): ?>
@@ -59,6 +61,18 @@ $matches = $grepper->getMatches($url, $searchTerm);
           </div>
           <?php endforeach;?>
       </section>
+
+
+
+
+      <section class="results">
+        <?php foreach($grepper->links as $link):?>
+            <?php var_dump($link);?>
+        <?php endforeach;?>
+test
+      </section>
+
+
 
       <section class="debug">
         <h1>Debug info</h1>
