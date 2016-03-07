@@ -14,12 +14,7 @@ class Grepper {
      * Returns a DOMDocument of the HTML string.
      */
     function getHTML($url) {
-        try {
-            $htmlSource = file_get_contents($url);
-        } catch (Exception $e) {
-            var_dump('PRICK');
-            echo 'ERROR'. $e->getMessage();
-        }
+        $htmlSource = file_get_contents($url);
         $HTML = DOMDocument::loadHTML($htmlSource);
         $this->html = $HTML->textContent;
         return $HTML->textContent;
@@ -48,24 +43,6 @@ class Grepper {
         $this->visitedLinks[] = $url;
         $this->matches = $matches;
         return $matches[0];
-    }
-
-    /**
-     * Sends a friendly error off to the user
-     */
-    function raiseError() {
-    
-    }
-
-    /**
-     * Returns the position of the first match it sees
-     */
-    function getMatch($html, $string) {
-        $pos = strpos($html, $string);
-
-        if ($pos !== false) {
-            return $pos;
-        }
     }
 }
 
