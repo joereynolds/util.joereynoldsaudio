@@ -11,11 +11,18 @@ class Grepper {
     }
 
     /**
+     * Gathers links to get text from
+     */
+    function gatherLinks() {
+        //Make a dom in the constructor instead, it'll be more useful and quicker.
+    
+    }
+
+    /**
      * Returns a DOMDocument of the HTML string.
      */
     function getHTML($url) {
-        $htmlSource = file_get_contents($url);
-        $HTML = DOMDocument::loadHTML($htmlSource);
+        $HTML = DOMDocument::loadHTMLFile($url);
         $this->html = $HTML->textContent;
         return $HTML->textContent;
     }
@@ -26,12 +33,13 @@ class Grepper {
      * coming from.
      */
     function getContextOfMatch($matchPosition) {
-        $context = substr($this->html, $matchPosition - 25, 100);
+        $context = substr($this->html, $matchPosition - 25, 50);
         return $context;
     }
 
     /**
      * Returns all the matches of a string.
+     * Case insensitive
      */
     function getMatches($url, $string) {
         if (in_array($url, $this->visitedLinks)) {
@@ -39,7 +47,7 @@ class Grepper {
         }
         $matches = [];
         $html = $this->getHTML($url);
-        preg_match_all("/$string/", $html, $matches, PREG_OFFSET_CAPTURE);
+        preg_match_all("/$string/i", $html, $matches, PREG_OFFSET_CAPTURE);
         $this->visitedLinks[] = $url;
         $this->matches = $matches;
         return $matches[0];
