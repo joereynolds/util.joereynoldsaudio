@@ -5,26 +5,27 @@ ini_set('display_errors', 'On');
 class Grepper {
 
     function __construct() {
-        $this->visitedLinks = [];
         $this->html = '';
+        $this->dom = new DOMDocument;
+        $this->visitedLinks = [];
         $this->matches = [];
+        $this->links = [];
     }
 
     /**
      * Gathers links to get text from
      */
-    function gatherLinks() {
-        //Make a dom in the constructor instead, it'll be more useful and quicker.
-    
+    function gatherLinks($url) {
+        $this->links = $this->dom->getElementsByTagName('a');
     }
 
     /**
      * Returns a DOMDocument of the HTML string.
      */
     function getHTML($url) {
-        $HTML = DOMDocument::loadHTMLFile($url);
-        $this->html = $HTML->textContent;
-        return $HTML->textContent;
+        $this->dom->loadHTMLFile($url);
+        $this->html = $this->dom->textContent;
+        return $this->html;
     }
 
     /**
