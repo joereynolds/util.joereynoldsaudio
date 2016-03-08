@@ -55,12 +55,10 @@ class Grepper {
         if (in_array($url, $this->visitedLinks)) {
             return;
         }
-        $matches = [];
         $html = $this->getHTML($url);
-        preg_match_all("/$string/i", $html, $matches, PREG_OFFSET_CAPTURE);
+        preg_match_all("/$string/i", $html, $this->matches, PREG_OFFSET_CAPTURE);
         $this->visitedLinks[] = $url;
-        $this->matches = $matches;
-        return $matches[0];
+        return $this->matches[0];
     }
 }
 
