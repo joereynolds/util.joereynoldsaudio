@@ -16,42 +16,44 @@ $grepper->gatherLinks($url);
         <script src="jquery.highlight-5.js"></script>
     </head>
 <body>
-    <main>
-        <section>
-            <form method="POST">
-                <div>
-                  <h2>URL</h2>
-                  <input name="url" placeholder="www.domain.com">
-                </div>
+  <main>
+    <section>
+      <form method="POST">
+        <div>
+          <h2>URL</h2>
+            <input name="url" placeholder="www.domain.com">
+        </div>
 
-                <div>
-                  <h2>Search Term</h2>
-                  <input name="string" placeholder="Enter the string to search for">
-                </div>
+        <div>
+          <h2>Search Term</h2>
+          <input name="string" placeholder="Enter the string to search for">
+        </div>
 
-                <div>
-                  <input class="big-red-button" type="submit" value="GO!">
-                </div>
-            </form>
-        </section>
+          <label class="match"><input type="checkbox">recurse?</label>
+          <label class="match"><input type="checkbox">load ajax?</label>
 
-      <section>
-        <h2>Results</h2>
+        <div>
+          <input class="big-red-button" type="submit" value="GO!">
+        </div>
+      </form>
+    </section>
+
+    <section>
+      <h2>Results</h2>
         <table>
           <tr>
             <th>Numbrero</th>
             <th>URL</th>
             <th>Matches</th>
           </tr>
-        <tr>
-          <td>1</td>
-          <td><?php echo $url ?></td>
-          <td><?php echo count($matches)?>
-          </td>
-        </tr>
+          <tr>
+            <td>1</td>
+            <td><?php echo $url ?></td>
+            <td><?php echo count($matches)?>
+            </td>
+          </tr>
         </table>
-
-      </section>
+    </section>
 
       <section class="results">
         <h2>Matches for <?php echo $url?></h2>
@@ -62,17 +64,11 @@ $grepper->gatherLinks($url);
           <?php endforeach;?>
       </section>
 
-
-
-
       <section class="results">
         <?php foreach($grepper->links as $link):?>
             <?php var_dump($link);?>
         <?php endforeach;?>
-test
       </section>
-
-
 
       <section class="debug">
         <h1>Debug info</h1>
@@ -80,7 +76,7 @@ test
         <div>Matches : <?php var_dump($grepper->matches);?></div>
       </section>
     </main>
-</body>
+  </body>
 </html>
 
 <script>

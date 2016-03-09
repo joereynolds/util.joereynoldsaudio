@@ -16,7 +16,7 @@ h1, h2, h3 {
   color : red;
   text-decoration: underline;
 }
-input {
+input:not([type="checkbox"]) {
   display :block;
   width : 100%;
   padding : 10px;
@@ -29,7 +29,6 @@ table {
   width : 100%;
   border : 1px solid #ccc;
   border-collapse: collapse;
-
 }
 th {
   padding : 5px;
@@ -75,6 +74,7 @@ input[type="submit"]:hover {
     background: #f3f3f3;
     font-family : monospace;
 }
+
 
 @keyframes rainbow {
   0%   {
