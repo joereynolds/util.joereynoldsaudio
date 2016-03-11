@@ -1,0 +1,35 @@
+html {
+  background : #f7f7f7;
+}
+body {
+  padding : 0;
+  margin : 0
+}
+h1 {
+  color : red;
+  text-decoration : underline;
+}
+section h1 {
+  text-align : center;
+}
+article h1 {
+  text-align : initial;
+}
+.wrapper {
+  font-family : arial;
+  width : 600px;
+  margin : auto;
+  margin-top : 25px;
+  padding : 25px;
+  background : white;
+  border : 1px solid #ccc;
+}
+a {
+  color : #aaa;
+  display : block;
+  text-decoration : underline;
+  transition : color .5s;
+}
+a:hover{
+  color : red;
+}
