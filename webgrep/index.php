@@ -4,8 +4,8 @@ require('webgrep.php');
 $grepper = new Grepper;
 $searchTerm = $_POST['string'];
 $url = $_POST['url'];
-
-$matches = $grepper->getMatches($url, $searchTerm);
+$ignoreHtml = (bool)$_POST['ignoreHtml'];
+$matches = $grepper->getMatches($url, $searchTerm, $ignoreHtml);
 $grepper->gatherLinks($url);
 ?>
 
@@ -33,6 +33,13 @@ $grepper->gatherLinks($url);
           <label class="match"><input type="checkbox">recurse?</label>
           <label class="match"><input type="checkbox">load ajax?</label>
           <label class="match"><input name="ignoreHtml" type="checkbox">ignore html?</label>
+
+        <p>Recurse : Recurses through every page on the site (not implemented)</p>
+        <p>Load ajax : Attemps to load all dynamic javascript before parsing the page (not implemented)</p>
+        <p>Ignore html : If specified, it parses the text content of the DOM, and won't search HTML tags for your search term</p>
+
+
+
 
         <div>
           <input class="big-red-button" type="submit" value="GO!">
@@ -68,7 +75,6 @@ $grepper->gatherLinks($url);
 
       <section class="results">
         <?php foreach($grepper->linksGatheredFromWebsite as $link):?>
-            <?php var_dump($link);?>
         <?php endforeach;?>
       </section>
 

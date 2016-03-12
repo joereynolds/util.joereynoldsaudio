@@ -4,6 +4,7 @@
 
 error_reporting(0);
 ini_set('display_errors', 0);
+
 class Grepper {
 
     function __construct() {
@@ -47,7 +48,7 @@ class Grepper {
      * coming from.
      */
     function getContextOfMatch($matchPosition) {
-        $contextContent = (!empty($this>rawHtmlTextContent))
+        $contextContent = (!empty($this->rawHtmlTextContent))
             ? $this->rawHtmlTextContent
             : $this->htmlTextContent;
         $context = substr($contextContent, $matchPosition - 25, 50);
@@ -58,22 +59,34 @@ class Grepper {
      * Returns all the matches of a string.
      * Case insensitive
      */
-    function getMatches($url, $string) {
+    function getMatches($url, $string, $ignoreHtml = false) {
+
         if (in_array($url, $this->visitedLinks)) {
             return;
         }
-        $rawHtml = $this->getHTMLAsRawString($url);
-        $rawHtmlMatches = [];
-        preg_match_all("/$string/i", $rawHtml, $rawHtmlMatches, PREG_OFFSET_CAPTURE);
+
         $this->visitedLinks[] = $url;
 
-        return $rawHtmlMatches[0];
+        if ($ignoreHtml) {
+            return $this->getTextContentMatches($url, $string);
+        }
+
+        return $this->getRawMatches($url, $string);
     }
 
     function getRawMatches($url, $string) {
+        $rawHtml = $this->getHTMLAsRawString($url);
+        $rawHtmlMatches = [];
+        preg_match_all("/$string/i", $rawHtml, $rawHtmlMatches, PREG_OFFSET_CAPTURE);
+        return $rawHtmlMatches[0];
+
     }
 
     function getTextContentMatches($url, $string) {
+        $html = $this->getHTMLTextContent($url);
+        $htmlMatches = [];
+        preg_match_all("/$string/i", $html, $htmlMatches, PREG_OFFSET_CAPTURE);
+        return $htmlMatches[0];
     }
 }
 
