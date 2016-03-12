@@ -4,6 +4,7 @@ require('webgrep.php');
 $grepper = new Grepper;
 $searchTerm = $_POST['string'];
 $url = $_POST['url'];
+
 $matches = $grepper->getMatches($url, $searchTerm);
 $grepper->gatherLinks($url);
 ?>
@@ -21,16 +22,17 @@ $grepper->gatherLinks($url);
       <form method="POST">
         <div>
           <h2>URL</h2>
-            <input name="url" placeholder="www.domain.com">
+            <input type="url" required name="url" placeholder="www.domain.com">
         </div>
 
         <div>
           <h2>Search Term</h2>
-          <input name="string" placeholder="Enter the string to search for">
+          <input required name="string" placeholder="Enter the string to search for">
         </div>
 
           <label class="match"><input type="checkbox">recurse?</label>
           <label class="match"><input type="checkbox">load ajax?</label>
+          <label class="match"><input name="ignoreHtml" type="checkbox">ignore html?</label>
 
         <div>
           <input class="big-red-button" type="submit" value="GO!">
@@ -59,7 +61,7 @@ $grepper->gatherLinks($url);
         <h2>Matches for <?php echo $url?></h2>
           <?php foreach($matches as $match): ?>
           <div class="match">
-            <?php echo $grepper->getContextOfMatch($match[1]);?>
+            <?php echo htmlspecialchars($grepper->getContextOfMatch($match[1]));?>
           </div>
           <?php endforeach;?>
       </section>

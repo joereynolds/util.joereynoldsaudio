@@ -1,11 +1,14 @@
 <?php
-error_reporting(-1);
-ini_set('display_errors', 'On');
+//error_reporting(-1);
+//ini_set('display_errors', 'On');
 
+error_reporting(0);
+ini_set('display_errors', 0);
 class Grepper {
 
     function __construct() {
         $this->htmlTextContent = '';
+        $this->rawHtmlTextContent = '';
         $this->dom = new DOMDocument;
         $this->visitedLinks = [];
         $this->linksGatheredFromWebsite = [];
@@ -34,6 +37,7 @@ class Grepper {
     }
 
     function getHTMLAsRawString($url) {
+        $this->rawHtmlTextContent = file_get_contents($url);
         return file_get_contents($url);
     }
 
@@ -43,7 +47,10 @@ class Grepper {
      * coming from.
      */
     function getContextOfMatch($matchPosition) {
-        $context = substr($this->htmlTextContent, $matchPosition - 25, 50);
+        $contextContent = (!empty($this>rawHtmlTextContent))
+            ? $this->rawHtmlTextContent
+            : $this->htmlTextContent;
+        $context = substr($contextContent, $matchPosition - 25, 50);
         return $context;
     }
 
@@ -55,14 +62,18 @@ class Grepper {
         if (in_array($url, $this->visitedLinks)) {
             return;
         }
-        $html = $this->getHTMLTextContent($url);
         $rawHtml = $this->getHTMLAsRawString($url);
-        $htmlMatches = [];
-        $rawMatches = [];
-        preg_match_all("/$string/i", $html, $htmlMatches, PREG_OFFSET_CAPTURE);
+        $rawHtmlMatches = [];
+        preg_match_all("/$string/i", $rawHtml, $rawHtmlMatches, PREG_OFFSET_CAPTURE);
         $this->visitedLinks[] = $url;
 
-        return $htmlMatches[0];
+        return $rawHtmlMatches[0];
+    }
+
+    function getRawMatches($url, $string) {
+    }
+
+    function getTextContentMatches($url, $string) {
     }
 }
 
