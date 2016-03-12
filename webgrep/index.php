@@ -65,7 +65,7 @@ $grepper->gatherLinks($url);
       </section>
 
       <section class="results">
-        <?php foreach($grepper->links as $link):?>
+        <?php foreach($grepper->linksGatheredFromWebsite as $link):?>
             <?php var_dump($link);?>
         <?php endforeach;?>
       </section>

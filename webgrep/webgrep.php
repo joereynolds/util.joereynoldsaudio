@@ -5,18 +5,17 @@ ini_set('display_errors', 'On');
 class Grepper {
 
     function __construct() {
-        $this->html = '';
+        $this->htmlTextContent = '';
         $this->dom = new DOMDocument;
         $this->visitedLinks = [];
-        $this->matches = [];
-        $this->links = [];
+        $this->linksGatheredFromWebsite = [];
     }
 
     /**
      * Only load the file if it hasn't been already
      */
     private function loadHTMLFromFile($url) {
-        if (empty($this->html)) {
+        if (empty($this->htmlTextContent)) {
             $this->dom->loadHTMLFile($url);
         }
     }
@@ -25,16 +24,17 @@ class Grepper {
      */
     function gatherLinks($url) {
         $this->loadHTMLFromFile($url);
-        $this->links = $this->dom->getElementsByTagName('a');
+        $this->linksGatheredFromWebsite[] = $this->dom->getElementsByTagName('a');
     }
 
-    /**
-     * Returns a DOMDocument of the HTML string.
-     */
-    function getHTML($url) {
+    function getHTMLTextContent($url) {
         $this->loadHTMLFromFile($url);
-        $this->html = $this->dom->textContent;
-        return $this->html;
+        $this->htmlTextContent = $this->dom->textContent;
+        return $this->htmlTextContent;
+    }
+
+    function getHTMLAsRawString($url) {
+        return file_get_contents($url);
     }
 
     /**
@@ -43,7 +43,7 @@ class Grepper {
      * coming from.
      */
     function getContextOfMatch($matchPosition) {
-        $context = substr($this->html, $matchPosition - 25, 50);
+        $context = substr($this->htmlTextContent, $matchPosition - 25, 50);
         return $context;
     }
 
@@ -55,10 +55,14 @@ class Grepper {
         if (in_array($url, $this->visitedLinks)) {
             return;
         }
-        $html = $this->getHTML($url);
-        preg_match_all("/$string/i", $html, $this->matches, PREG_OFFSET_CAPTURE);
+        $html = $this->getHTMLTextContent($url);
+        $rawHtml = $this->getHTMLAsRawString($url);
+        $htmlMatches = [];
+        $rawMatches = [];
+        preg_match_all("/$string/i", $html, $htmlMatches, PREG_OFFSET_CAPTURE);
         $this->visitedLinks[] = $url;
-        return $this->matches[0];
+
+        return $htmlMatches[0];
     }
 }
 
