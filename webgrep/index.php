@@ -7,6 +7,11 @@ $url = $_POST['url'];
 $ignoreHtml = (bool)$_POST['ignoreHtml'];
 $matches = $grepper->getMatches($url, $searchTerm, $ignoreHtml);
 $grepper->gatherLinks($url);
+
+if ($_POST['url']) {
+    var_dump($grepper->linksGatheredFromWebsite);
+    //exit;
+}
 ?>
 
 <html>
