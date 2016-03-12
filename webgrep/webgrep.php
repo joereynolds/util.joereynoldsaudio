@@ -8,6 +8,8 @@ ini_set('display_errors', 0);
 
 class Grepper {
 
+    const LINK_LIMIT = 1000;
+
     function __construct()
     {
         $this->htmlTextContent = '';
@@ -47,7 +49,7 @@ class Grepper {
      * - mark the current page as a visited link
      * - Go to the next item in the links array and do the above
      */
-    function gatherLinks($url, $listIndex=0)
+    function gatherLinks($url, $linkIndex=0)
     {
         if ($this->gatherLinksConditionFail($url)) {
             return;
@@ -57,12 +59,13 @@ class Grepper {
         $foundLinks = $this->dom->getElementsByTagName('a');
         $this->appendDiscoveredLinks($foundLinks);
         $this->visitedLinks[] = $url;
+        $this->gatherLinks($this->linksGatheredFromWebsite[++$linkIndex], $linkIndex);
     }
 
     private function gatherLinksConditionFail($url)
     {
         if (in_array($url, $this->visitedLinks) ||
-            count($this->linksGatheredFromWebsite) >= 50
+            count($this->linksGatheredFromWebsite) >= static::LINK_LIMIT 
         ) {
             return true;
         }
@@ -72,9 +75,9 @@ class Grepper {
     {
         foreach ($links as $link) {
             $url = $link->getAttribute('href');
-            if (parse_url($url)['host'] !== $this->domainNameToSearch) {
-                continue;
-            }
+           // if (parse_url($url)['host'] !== $this->domainNameToSearch) {
+           //     continue;
+           // }
             $this->linksGatheredFromWebsite[] = $link->getAttribute('href');
         }
     }

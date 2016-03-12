@@ -85,8 +85,9 @@ if ($_POST['url']) {
 
       <section class="debug">
         <h1>Debug info</h1>
-        <div>Visited links : <?php var_dump($grepper->visitedLinks); ?></div>
-        <div>Matches : <?php var_dump($grepper->matches);?></div>
+        <div class="match">Visited links : <?php var_dump($grepper->visitedLinks); ?></div>
+        <div class="match">Matches : <?php var_dump($grepper->matches);?></div>
+        <div class="match">Gathered links : <?php print_r($grepper->linksGatheredFromWebsite)?>
       </section>
     </main>
   </body>
