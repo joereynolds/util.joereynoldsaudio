@@ -5,13 +5,11 @@ $grepper = new Grepper;
 $searchTerm = $_POST['string'];
 $url = $_POST['url'];
 $ignoreHtml = (bool)$_POST['ignoreHtml'];
-$matches = $grepper->getMatches($url, $searchTerm, $ignoreHtml);
-$grepper->gatherLinks($url);
 
 if ($_POST['url']) {
-    var_dump($grepper->linksGatheredFromWebsite);
-    //exit;
+    $grepper->gatherLinks($url);
 }
+
 ?>
 
 <html>
@@ -38,10 +36,12 @@ if ($_POST['url']) {
           <label class="match"><input type="checkbox">recurse?</label>
           <label class="match"><input type="checkbox">load ajax?</label>
           <label class="match"><input name="ignoreHtml" type="checkbox">ignore html?</label>
+          <label class="match"><input type="checkbox">ignore search?</label>
 
         <p>Recurse : Recurses through every page on the site (not implemented)</p>
         <p>Load ajax : Attemps to load all dynamic javascript before parsing the page (not implemented)</p>
         <p>Ignore html : If specified, it parses the text content of the DOM, and won't search HTML tags for your search term</p>
+        <p>Ignore search : Don't bother searching for search Term, just get all the links you can find (not implemented)</p>
 
 
 
@@ -52,6 +52,7 @@ if ($_POST['url']) {
       </form>
     </section>
 
+    <?php if ($_POST['url']):?>
     <section>
       <h2>Results</h2>
         <table>
@@ -70,25 +71,26 @@ if ($_POST['url']) {
     </section>
 
       <section class="results">
-        <h2>Matches for <?php echo $url?></h2>
+        <?php foreach($grepper->linksGatheredFromWebsite as $link):?>
+        <?php $matches = $grepper->getMatches($link, $searchTerm, $ignoreHtml);?>
+        <h2>Matches for 
+            <a href="<?php echo $link; ?>"><?php echo $link?></a>
+        </h2>
           <?php foreach($matches as $match): ?>
           <div class="match">
             <?php echo htmlspecialchars($grepper->getContextOfMatch($match[1]));?>
           </div>
           <?php endforeach;?>
-      </section>
-
-      <section class="results">
-        <?php foreach($grepper->linksGatheredFromWebsite as $link):?>
         <?php endforeach;?>
       </section>
 
       <section class="debug">
         <h1>Debug info</h1>
-        <div class="match">Visited links : <?php var_dump($grepper->visitedLinks); ?></div>
-        <div class="match">Matches : <?php var_dump($grepper->matches);?></div>
-        <div class="match">Gathered links : <?php print_r($grepper->linksGatheredFromWebsite)?>
+        <div class="match"><span>Visited links : </span><?php var_dump($grepper->visitedLinks); ?></div>
+        <div class="match"><span>Matches : </span><?php var_dump($grepper->matches);?></div>
+        <div class="match"><span>Gathered links : </span><?php print_r($grepper->linksGatheredFromWebsite)?>
       </section>
+    <?php endif;?>
     </main>
   </body>
 </html>

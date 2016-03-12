@@ -12,9 +12,15 @@ main {
   margin-top : 25px;
   padding : 25px;
 }
+form {
+    margin-bottom : 0;
+}
 h1, h2, h3 {
   color : red;
   text-decoration: underline;
+}
+a {
+    color : currentColor;
 }
 input:not([type="checkbox"]) {
   display :block;
@@ -73,6 +79,9 @@ input[type="submit"]:hover {
     padding : 25px;
     background: #f3f3f3;
     font-family : monospace;
+}
+.debug span {
+    color : red;
 }
 
 
