@@ -8,7 +8,7 @@ ini_set('display_errors', 0);
 
 class Grepper {
 
-    const LINK_LIMIT = 1000;
+    const LINK_LIMIT = 10;
 
     function __construct()
     {
@@ -37,18 +37,6 @@ class Grepper {
         }
     }
 
-    /* Potential recursive solution
-     *
-     * - Check the page belongs to the same domain.
-     *     - We don't want to start recursing through an entirely
-     *       different site!
-     * - Check the page hasn't already been visited
-     *     - If it has, go to the next link
-     * - get all links for the current page
-     * - add the links from the current page to the links array
-     * - mark the current page as a visited link
-     * - Go to the next item in the links array and do the above
-     */
     function gatherLinks($url, $linkIndex=0)
     {
         if ($this->gatherLinksConditionFail($url)) {
