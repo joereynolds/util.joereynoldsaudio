@@ -9,6 +9,13 @@ h1 {
   color : red;
   text-decoration : underline;
 }
+input {
+    display : block;
+    width : 100%;
+    padding : 10px;
+    transition : background .5s, color .5s;
+    border: 1px solid #ccc;
+}
 section h1 {
   text-align : center;
 }
@@ -33,3 +40,18 @@ a {
 a:hover{
   color : red;
 }
+
+.validation-one input:invalid {
+    color : red;
+}
+.validation-one input:valid {
+    color : #000
+}
+
+.validation-two input:invalid {
+    background : #ffcbcb;
+}
+.validation-two input:valid {
+    background : #cffdcf;
+}
+</style>

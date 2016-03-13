@@ -15,8 +15,48 @@ $container['view'] = function($container) {
     return $view;
 };
 
-$app->get('/', function($request, $response, $args) {
+//Massive duplication, learn slim/twig!
+$app->get('/snippets/validation', function($request, $response, $args) {
+    return $this->view->render($response, 'validation.phtml',
+        [
+            'title' => 'Validation'
+        ]
+    );
+});
 
+$app->get('/snippets/tabs', function($request, $response, $args) {
+    return $this->view->render($response, 'tabs.phtml',
+        [
+            'title' => 'Flex tabs'
+        ]
+    );
+});
+
+$app->get('/snippets/slideshow', function($request, $response, $args) {
+    return $this->view->render($response, 'slideshow.phtml',
+        [
+            'title' => 'Slideshow'
+        ]
+    );
+});
+
+$app->get('/snippets/modals', function($request, $response, $args) {
+    return $this->view->render($response, 'modals.phtml',
+        [
+            'title' => 'Modals'
+        ]
+    );
+});
+
+$app->get('/snippets/barchart', function($request, $response, $args) {
+    return $this->view->render($response, 'barchart.phtml',
+        [
+            'title' => 'Barcharts'
+        ]
+    );
+});
+
+$app->get('/', function($request, $response, $args) {
     return $this->view->render($response, 'index.phtml');
 })->setName('index');
 

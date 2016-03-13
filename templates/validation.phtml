@@ -1,0 +1,33 @@
+{% extends 'base.phtml' %}
+
+{% block content %}
+<style>
+.validation-one input:invalid {
+    color : red;
+}
+.validation-one input:valid {
+    color : #000
+}
+
+.validation-two input:invalid {
+    background : #ffcbcb;
+}
+.validation-two input:valid {
+    background : #cffdcf;
+}
+</style>
+  <p>Using pure HTML5 and CSS we can create some pretty nifty validation effects. No need for js! :D </p>
+
+  <p>To see validation pass, type 'validate'</p>
+
+  <section class="validation-one">
+      <h2>Text transition</h2>
+      <input pattern="validate" required placeholder="Your text here...">
+  </section>
+
+  <section class="validation-two">
+      <h2>Background transition</h2>
+      <input pattern="validate" required placeholder="Your text here...">
+  </section>
+
+{% endblock %}

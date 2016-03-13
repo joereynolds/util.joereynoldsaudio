@@ -1,7 +1,8 @@
-<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+{% extends 'base.phtml' %}
 
-<div><a href='#' data-modal="normal-modal">Open modal</a></div>
-<div><a href='#' data-modal="other-modal">Open other modal</a></div>
+{% block content %}
+<a href='#' data-modal="normal-modal">Open modal</a>
+<a href='#' data-modal="other-modal">Open other modal</a>
 
 <div class="modal" data-id="normal-modal">
     <div class="inner">
@@ -18,9 +19,6 @@
 </div>
 
 <style>
-body {
-  font-family: arial;
-}
 .modal {
   display : none;
   height : 100vh;
@@ -52,3 +50,4 @@ $('[data-modal]').click(function(){
   $('.modal[data-id=' + $(this).data('modal') +']').toggleClass('open');
 });
 </script>
+{% endblock %}
