@@ -15,43 +15,11 @@ $container['view'] = function($container) {
     return $view;
 };
 
-//Massive duplication, learn slim/twig!
-$app->get('/snippets/validation', function($request, $response, $args) {
-    return $this->view->render($response, 'validation.phtml',
+//slightly hacky route for html experiments
+$app->get('/snippets/{snippet}', function($request, $response, $args) {
+    return $this->view->render($response, $args['snippet'] . '.phtml',
         [
-            'title' => 'Validation'
-        ]
-    );
-});
-
-$app->get('/snippets/tabs', function($request, $response, $args) {
-    return $this->view->render($response, 'tabs.phtml',
-        [
-            'title' => 'Flex tabs'
-        ]
-    );
-});
-
-$app->get('/snippets/slideshow', function($request, $response, $args) {
-    return $this->view->render($response, 'slideshow.phtml',
-        [
-            'title' => 'Slideshow'
-        ]
-    );
-});
-
-$app->get('/snippets/modals', function($request, $response, $args) {
-    return $this->view->render($response, 'modals.phtml',
-        [
-            'title' => 'Modals'
-        ]
-    );
-});
-
-$app->get('/snippets/barchart', function($request, $response, $args) {
-    return $this->view->render($response, 'barchart.phtml',
-        [
-            'title' => 'Barcharts'
+            'title' => ucwords($args['snippet'])
         ]
     );
 });

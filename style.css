@@ -2,6 +2,7 @@ html {
   background : #f7f7f7;
 }
 body {
+  font-family : arial;
   padding : 0;
   margin : 0
 }
@@ -22,15 +23,6 @@ section h1 {
 article h1 {
   text-align : initial;
 }
-.wrapper {
-  font-family : arial;
-  width : 600px;
-  margin : auto;
-  margin-top : 25px;
-  padding : 25px;
-  background : white;
-  border : 1px solid #ccc;
-}
 a {
   color : #aaa;
   display : block;
@@ -40,18 +32,23 @@ a {
 a:hover{
   color : red;
 }
-
-.validation-one input:invalid {
-    color : red;
+main {
+  width : 600px;
+  margin : auto;
+  margin-top : 25px;
+  padding : 25px;
+  background : white;
+  border : 1px solid #ccc;
 }
-.validation-one input:valid {
-    color : #000
+.nav-back {
+    background : red;
+    color : white;
+    padding : 5px;
+    text-align : center;
+    text-decoration : none;
+    font-size : 20px;
+    transition : none;
 }
-
-.validation-two input:invalid {
-    background : #ffcbcb;
+.nav-back:hover {
+    color : #fff;
 }
-.validation-two input:valid {
-    background : #cffdcf;
-}
-</style>
