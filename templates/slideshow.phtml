@@ -1,8 +1,7 @@
-<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+{% extends 'base.phtml' %}
 
+{% block content %}
 <div class="slides">
-  <h1 class="heading fatty">Slides</h1>
-
   <!--Try and use counter instead of slide num?-->
   <div class="slide current fatty" data-slide-num="1">
       <h1>Cats</h1>
@@ -21,13 +20,6 @@
 </div>
 
 <style>
-body, h1, a, a:visited {
-  padding : 0;
-  margin : 0;
-  color : black;
-  font-family: arial;
-  text-decoration: none;
-}
 .slides {
   height : 100vh;
   text-align: center;
@@ -38,7 +30,6 @@ body, h1, a, a:visited {
   display : none;
   height : 90vh;
 }
-
 .slide-controls {
   position: absolute;
   bottom: 0;
@@ -64,19 +55,12 @@ body, h1, a, a:visited {
 .current {
   display : block;
 }
-.heading {
-  border-bottom: 1px solid #ccc;
-}
-.fatty {
-  padding : 25px;
-}
 .disabled {
   background : #ccc;
 }
 </style>
 
 <script>
-  //integer denoting the current slidenumber
   var current = $('.current').data('slide-num');
   var slideNums = $('.slide').map(function(){
     return parseInt($(this).data('slide-num'));
@@ -96,3 +80,4 @@ body, h1, a, a:visited {
     $('.slide[data-slide-num=' + current +']').addClass('current');
   });
 </script>
+{% endblock %}
