@@ -1,0 +1,39 @@
+{% extends 'base.phtml' %}
+
+{% block content %}
+<p>Create an image from</p>
+<form>
+  <h2>Filesize</h2>
+  <input type="radio" name="choice">
+
+  <div class="columns">
+    <div class="column">
+      <input type="number" min="1" max="999">
+    </div>
+    <div class="column">
+      <select>
+        <option>b</option>
+        <option>kb</option>
+        <option>mb</option>
+      </select>
+    </div>
+  </div>
+
+  <h2>Dimensions</h2>
+  <input type="radio" name="choice">
+
+  <div class="columns">
+      <section class="column">
+        <h3>Width</h3>
+        <input type="number">
+      </section>
+
+      <section class="column">
+        <h3>Height</h3>
+        <input type="number">
+      </section>
+  </div>
+
+  <input type="submit">
+</form>
+{% endblock %}
