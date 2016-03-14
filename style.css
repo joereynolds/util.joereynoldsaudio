@@ -56,7 +56,16 @@ a:hover{
 }
 .columns {
     display : flex;
-    margin-bottom : 25px;
+}
+.columns + .columns {
+    margin-top : 25px;
+}
+.columns + .columns h1,
+.columns + .columns h2,
+.columns + .columns h3,
+.columns + .columns h4,
+.columns + .columns h5 {
+    margin-top : 0;
 }
 .column {
     flex : 1;
