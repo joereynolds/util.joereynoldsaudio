@@ -26,13 +26,14 @@ h1, h2, h3, h4, h5 {
   color : red;
   text-decoration : underline;
 }
-input {
+input:not([type="radio"]) {
     display : block;
     width : 100%;
     padding : 10px;
     transition : background .5s, color .5s;
     border: 1px solid #ccc;
 }
+
 select {
     background : transparent;
     display : block;
@@ -54,8 +55,17 @@ a {
 a:hover{
   color : red;
 }
+/* basic grid system with flex*/
 .columns {
     display : flex;
+}
+
+.columns:only-of-type {
+    margin-bottom : 25px;
+}
+/* remove bottom margins from nested .columns */
+.columns .columns {
+    margin-bottom :0;
 }
 .columns + .columns {
     margin-top : 25px;
