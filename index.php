@@ -1,5 +1,9 @@
 <?php
 require './vendor/autoload.php';
+use testcontroller\test;
+
+$t = new HomeController();
+var_dump($t);
 $app = new \Slim\App();
 
 $container = $app->getContainer();
@@ -19,9 +23,8 @@ $app->get('/', function($request, $response, $args) {
     return $this->view->render($response, 'index.phtml');
 })->setName('index');
 
-$app->get('/util', function($request, $response, $args) {
-    return $response->getBody()->write("hello");
-});
+$app->get('/util', 'HomeController:dispatch');
+
 
 $app->get('/util/imagemaker', function($request, $response, $args) {
     return $this->view->render($response, 'imagemaker.phtml',
