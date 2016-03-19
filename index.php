@@ -1,9 +1,7 @@
 <?php
 require './vendor/autoload.php';
-use testcontroller\test;
+include 'homeController.php'; //change this to a use statement;
 
-$t = new HomeController();
-var_dump($t);
 $app = new \Slim\App();
 
 $container = $app->getContainer();
@@ -23,7 +21,7 @@ $app->get('/', function($request, $response, $args) {
     return $this->view->render($response, 'index.phtml');
 })->setName('index');
 
-$app->get('/util', 'HomeController:dispatch');
+$app->get('/util', "jra\HomeController:dispatch");
 
 
 $app->get('/util/imagemaker', function($request, $response, $args) {
