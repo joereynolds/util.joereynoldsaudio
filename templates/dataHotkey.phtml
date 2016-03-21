@@ -1,0 +1,54 @@
+{% extends 'base.phtml' %}
+
+{% block content %}
+<h2>Fo<span data-hotkey="c">c</span>us the textbox</h2>
+<input type="text">
+<h2><span data-hotkey="h">H</span>ighlight some text</h2>
+<p>An experiment inspired by the menu in the game <span>Osmos'</span>.
+<h2 class="delete"><span data-hotkey="d">D</span>elete me</h2>
+
+<style>
+span {
+  padding : 0;
+  margin : 0;
+}
+[data-hotkey]:before {
+  content : '[';
+}
+[data-hotkey]:after{
+  content : ']';
+}
+[data-hotkey] {
+  color : black;
+  background : white;
+  transition : all .5s;
+}
+[data-hotkey]:hover {
+  color : white;
+  background : black;
+}
+h2 {
+  text-decoration : none;
+}
+.highlighted {
+  background : yellow;
+}
+
+</style>
+<script>
+$('body').keydown(function(event){
+    var key = String.fromCharCode(event.keyCode);
+    var input = $('[type="text"]');
+    if (key === 'C' && !input.is(':focus')) {
+        input.focus();
+        return false;
+    }
+    if (key === 'H') {
+        $('p span').addClass('highlighted');
+    }
+    if (key === 'D') {
+        $('.delete').fadeOut();
+    }
+});
+</script>
+{% endblock %}
