@@ -1,6 +1,4 @@
 <?php
-
-
 //FYI
 //Any stuff with a 'util' path is basically a refactored and
 //improved version of the same programme under the 'utilities' path
@@ -8,6 +6,7 @@ require './vendor/autoload.php';
 
 //We need autoloading for these chaps
 include 'homeController.php';
+include './models/imageFactory.php';
 
 $app = new \Slim\App();
 
@@ -30,11 +29,21 @@ $app->get('/', function($request, $response, $args) {
 
 $app->get('/util', "jra\HomeController:dispatch");
 
+
 $app->get('/util/photodata', function($request, $response, $args) {
+    $imageFactory = new \jra\models\ImageFactory();
+
+    //Don't see why I need to call this again even though it's
+    //called in the constructor?
+    $imageFactory->populateImages();
     return $this->view->render($response, 'photodata.phtml',
     [
         'title' => 'Exif Data Viewer',
-        'images' => scandir('utilities/photodata/images')
+        'images' => $imageFactory->images,
+        'stylesheet' => '/utilities/photodata/style.css',
+        'sweetalertcss' => '/utilities/photodata/sweetalert/dist/sweetalert.css',
+        'sweetalertjs' => '/utilities/photodata/sweetalert/dist/sweetalert.min.js',
+        'script' => '/utilities/photodata/script.js'
     ]
     );
 });

@@ -1,4 +1,5 @@
 <?php
+namespace jra\models;
 
 class Image {
 
