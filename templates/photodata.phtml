@@ -10,9 +10,9 @@
 </form>
 
 
-<div class="image-container">
+<div class="image-container columns">
     {% for image in images %}
-        <section>
+        <section class="column">
             <h1>{{image.filename}}</h1>
             <a href="/{{image.filename}}">
                 <img src="/{{image.filename}}">

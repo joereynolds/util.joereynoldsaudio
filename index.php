@@ -40,7 +40,7 @@ $app->get('/util/photodata', function($request, $response, $args) {
     [
         'title' => 'Exif Data Viewer',
         'images' => $imageFactory->images,
-        'stylesheet' => '/utilities/photodata/style.css',
+        'stylesheet' => '/utilities/photodata/newstyle.css',
         'sweetalertcss' => '/utilities/photodata/sweetalert/dist/sweetalert.css',
         'sweetalertjs' => '/utilities/photodata/sweetalert/dist/sweetalert.min.js',
         'script' => '/utilities/photodata/script.js'
