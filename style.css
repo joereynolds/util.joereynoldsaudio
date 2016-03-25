@@ -25,6 +25,7 @@ main {
 h1, h2, h3, h4, h5 {
   color : red;
   text-decoration : underline;
+  word-break: break-all;
 }
 input:not([type="radio"]) {
     display : block;
