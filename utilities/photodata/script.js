@@ -10,7 +10,6 @@ $(document).ready(function(){
             });
             return false;
         }
-
     });
 
     $('.delete-button').click(function(){
@@ -26,9 +25,9 @@ $(document).ready(function(){
         function(hasConfirmed) {
             if(hasConfirmed) {
                 $.ajax({
-                    url : 'photodata.php' ,
+                    url : '/ajax/photodataDelete.php' ,
                     type: 'POST',
-                    data: {name : fileName, method : 'delete'}, 
+                    data: {name : fileName},
                     success: function(result) {
                         swal('File Deleted!', '', 'success');
                     }

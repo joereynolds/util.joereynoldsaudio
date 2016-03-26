@@ -6,7 +6,8 @@ require './vendor/autoload.php';
 
 //We need autoloading for these chaps
 include 'homeController.php';
-include './models/imageFactory.php';
+include './models/ImageFactory.php';
+include './models/FileManager.php';
 
 $app = new \Slim\App();
 
@@ -37,15 +38,23 @@ $app->get('/util/photodata', function($request, $response, $args) {
     //called in the constructor?
     $imageFactory->populateImages();
     return $this->view->render($response, 'photodata.phtml',
-    [
-        'title' => 'Exif Data Viewer',
-        'images' => $imageFactory->images,
-        'stylesheet' => '/utilities/photodata/newstyle.css',
-        'sweetalertcss' => '/utilities/photodata/sweetalert/dist/sweetalert.css',
-        'sweetalertjs' => '/utilities/photodata/sweetalert/dist/sweetalert.min.js',
-        'script' => '/utilities/photodata/script.js'
-    ]
+        [
+            'title' => 'Exif Data Viewer',
+            'images' => $imageFactory->images,
+            'stylesheet' => '/utilities/photodata/newstyle.css',
+            'sweetalertcss' => '/utilities/photodata/sweetalert/dist/sweetalert.css',
+            'sweetalertjs' => '/utilities/photodata/sweetalert/dist/sweetalert.min.js',
+            'script' => '/utilities/photodata/script.js'
+        ]
     );
+});
+
+$app->post('/util/photodata', function($request, $response, $args) {
+    $path = './utilities/photodata/images/';
+    $filename = $_FILES['file']['name'];
+    $fileManager = new \jra\models\FileManager();
+    $fileManager->uploadFile($path . $filename);
+    return $response->getBody()->write(var_dump($path . $filename));
 });
 
 $app->get('/util/imagemaker', function($request, $response, $args) {
