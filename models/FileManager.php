@@ -27,7 +27,7 @@ class FileManager
 
     private function fileExceedsServerLimit() {
         if ($_FILES['file']['size'] > static::SERVER_LIMIT) {
-            return;
+            return true;
         }
     }
 }
