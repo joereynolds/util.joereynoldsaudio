@@ -26,7 +26,7 @@ $(document).ready(function(){
             if(hasConfirmed) {
                 $.ajax({
                     url : '/ajax/photodataDelete.php' ,
-                    type: 'POST',
+                    type: 'DELETE',
                     data: {name : fileName},
                     success: function(result) {
                         swal('File Deleted!', '', 'success');

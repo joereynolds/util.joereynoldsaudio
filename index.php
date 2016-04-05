@@ -30,8 +30,11 @@ $app->get('/', function($request, $response, $args) {
 
 $app->get('/util', "jra\HomeController:dispatch");
 
-
-$app->get('/util/photodata', function($request, $response, $args) {
+$app->map(['GET', 'POST'], '/util/photodata', function($request, $response, $args) {
+    $path = './utilities/photodata/images/';
+    $filename = $_FILES['file']['name'];
+    $fileManager = new \jra\models\FileManager();
+    $fileManager->uploadFile($path . $filename);
     $imageFactory = new \jra\models\ImageFactory();
 
     //Don't see why I need to call this again even though it's
@@ -47,14 +50,6 @@ $app->get('/util/photodata', function($request, $response, $args) {
             'script' => '/utilities/photodata/script.js'
         ]
     );
-});
-
-$app->post('/util/photodata', function($request, $response, $args) {
-    $path = './utilities/photodata/images/';
-    $filename = $_FILES['file']['name'];
-    $fileManager = new \jra\models\FileManager();
-    $fileManager->uploadFile($path . $filename);
-    return $response->getBody()->write(var_dump($path . $filename));
 });
 
 $app->get('/util/imagemaker', function($request, $response, $args) {
@@ -75,6 +70,5 @@ $app->get('/snippets/{snippet}', function($request, $response, $args) {
         ]
     );
 });
-
 
 $app->run();

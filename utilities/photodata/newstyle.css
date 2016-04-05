@@ -21,6 +21,7 @@ img {
   background : beige;
   padding : 5px;
   margin-bottom : 25px;
+  word-break : break-all;
 }
 .delete-button {
   border : 1px solid red;
