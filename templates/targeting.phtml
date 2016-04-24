@@ -1,0 +1,113 @@
+{% extends 'base.phtml' %}
+
+{% block content %}
+
+<div class="status-bar bordered">
+  <div class="status">Success</div>
+  <div class="status">Unavailable</div>
+  <div class="status">Error</div>
+</div>
+
+<div class="bordered">
+  <div class="flex-row">
+    <div class="component card bordered">
+      <img src="">
+      <p>Look at this cat's face! Isn't it lovely? The answer is yes!</p>
+    </div>
+  
+    <div class="component card bordered">
+      <img src="">
+      <p>Look at this cat's face! Isn't it lovely? The answer is yes!</p>
+    </div>
+  </div>
+  
+  <div class="flex-row">
+    <div class="component card bordered">
+      <img src="">
+      <p>Look at this cat's face! Isn't it lovely? The answer is yes!</p>
+    </div>
+  
+    <div class="component card bordered">
+      <img src="http://media4.popsugar-assets.com/files/2014/08/08/878/n/1922507/caef16ec354ca23b_thumb_temp_cover_file32304521407524949.xxxlarge/i/Funny-Cat-GIFs.jpg">
+      <p>Look at this cat's face! Isn't it lovely? The answer is yes!</p>
+    </div>
+  </div>
+
+  <div class="flex-row">
+    <div class="component card bordered is-unavailable">
+      <img src="">
+      <p>Look at this cat's face! Isn't it lovely? The answer is yes!</p>
+    </div>
+  
+  </div>
+
+
+
+</div>
+
+<style>
+p {
+  margin : 0;
+  padding : 0;
+}
+.bordered {
+  padding : 5px;
+  border : 1px solid #ccc;
+}
+.status-bar {
+  margin-bottom : 25px;
+}
+.status {
+  display : inline-block;
+  padding : 5px;
+  border-radius : 5px;
+  background-color : red;
+  color : #fff;
+  opacity : 0.6;
+  -webkit-user-select : none;
+}
+.status:hover {
+  cursor : pointer;
+}
+.is-selected {
+  opacity : 1;
+}
+.is-unavailable {
+  opacity : 0.6;
+  background : #ddd;
+}
+.is-error {
+  border-color : red;
+}
+
+.flex-row{
+  display : flex;
+  flex-wrap : wrap;
+}
+.flex-row + .flex-row {
+  margin-top : 5px;
+}
+.card {
+  display : flex;
+  flex : 1;
+  font-size : 12px;
+}
+.card + .card {
+  margin-left : 5px;
+}
+.card img {
+  width : 50px;
+  height : 50px;
+}
+
+
+
+
+</style>
+<script>
+$('.status').click(function(){
+    $('.status').not($(this)).removeClass('is-selected');
+    $(this).toggleClass('is-selected');
+});
+</script>
+{% endblock %}
