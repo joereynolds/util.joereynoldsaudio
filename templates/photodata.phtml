@@ -10,9 +10,9 @@
 </form>
 
 
-<div class="image-container columns">
+<div class="columns">
     {% for image in images %}
-        <section class="column">
+        <section class="component column">
             <h1>{{image.filename}}</h1>
             <a href="/{{image.filename}}">
                 <img src="/{{image.filename}}">
@@ -32,9 +32,4 @@
         </section>
     {% endfor %}
 </div>
-
-<script>
-</script>
 {% endblock %}
-
-

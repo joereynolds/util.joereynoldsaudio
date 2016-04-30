@@ -16,9 +16,6 @@ main {
   width : 600px;
   margin : auto;
   margin-top : 25px;
-  padding : 25px;
-  background : white;
-  border : 1px solid #ccc;
 }
 h1, h2, h3, h4, h5 {
   color : red;
