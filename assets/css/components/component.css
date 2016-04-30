@@ -1,0 +1,9 @@
+/*
+ * Base styling for a component
+ */
+
+.component {
+    padding : 25px;
+    background : #fff;
+    border : 1px solid #ccc;
+}

@@ -1,0 +1,25 @@
+.columns {
+    display : flex;
+}
+.columns:only-of-type {
+    margin-bottom : 25px;
+}
+.columns .columns {
+    margin-bottom :0;
+}
+.columns + .columns {
+    margin-top : 25px;
+}
+.columns + .columns h1,
+.columns + .columns h2,
+.columns + .columns h3,
+.columns + .columns h4,
+.columns + .columns h5 {
+    margin-top : 0;
+}
+.column {
+    flex : 1;
+}
+.column + .column {
+    margin-left : 25px;
+}

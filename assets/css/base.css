@@ -4,13 +4,11 @@ form {
 }
 /* end reset */
 
-
-
 html {
   background : #f7f7f7;
+  font-family : arial;
 }
 body {
-  font-family : arial;
   padding : 0;
   margin : 0
 }
@@ -55,34 +53,6 @@ a {
 }
 a:hover{
   color : red;
-}
-/* basic grid system with flex*/
-.columns {
-    display : flex;
-}
-
-.columns:only-of-type {
-    margin-bottom : 25px;
-}
-/* remove bottom margins from nested .columns */
-.columns .columns {
-    margin-bottom :0;
-}
-.columns + .columns {
-    margin-top : 25px;
-}
-.columns + .columns h1,
-.columns + .columns h2,
-.columns + .columns h3,
-.columns + .columns h4,
-.columns + .columns h5 {
-    margin-top : 0;
-}
-.column {
-    flex : 1;
-}
-.column + .column {
-    margin-left : 25px;
 }
 .nav-back {
     background : red;
