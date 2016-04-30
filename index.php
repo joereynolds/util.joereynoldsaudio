@@ -31,7 +31,7 @@ $app->get('/', function($request, $response, $args) {
 $app->get('/util', "jra\HomeController:dispatch");
 
 $app->map(['GET', 'POST'], '/util/photodata', function($request, $response, $args) {
-    $path = './utilities/photodata/images/';
+    $path = './assets/images/photodata/';
     $filename = $_FILES['file']['name'];
     $fileManager = new \jra\models\FileManager();
     $fileManager->uploadFile($path . $filename);

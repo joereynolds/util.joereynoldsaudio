@@ -4,7 +4,7 @@ include 'image.php';
 
 class ImageFactory
 {
-    const PHOTODATA_IMAGE_DIR = 'utilities/photodata/images/';
+    const PHOTODATA_IMAGE_DIR = 'assets/images/photodata/';
 
     public function __construct()
     {
