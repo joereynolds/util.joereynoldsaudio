@@ -45,9 +45,9 @@ $app->map(['GET', 'POST'], '/util/photodata', function($request, $response, $arg
             'title' => 'Exif Data Viewer',
             'images' => $imageFactory->images,
             'stylesheet' => '/utilities/photodata/newstyle.css',
-            'sweetalertcss' => '/utilities/photodata/sweetalert/dist/sweetalert.css',
-            'sweetalertjs' => '/utilities/photodata/sweetalert/dist/sweetalert.min.js',
-            'script' => '/utilities/photodata/script.js'
+            'sweetalertcss' => '/libraries/sweetalert/dist/sweetalert.css',
+            'sweetalertjs' => '/libraries/sweetalert/dist/sweetalert.min.js',
+            'script' => '/assets/js/photodata.js'
         ]
     );
 });
