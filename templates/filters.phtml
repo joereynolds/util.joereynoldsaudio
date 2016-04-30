@@ -1,0 +1,67 @@
+{% extends 'base.phtml' %}
+
+{% block content %}
+
+<p>CSS filter experiments. Only works on later versions of Chrome.</p>
+
+<h2>On images</h2>
+<div class="columns">
+  <div class="column">
+    <h3>filter : blur(5px)</h3>
+    <img class="blurred" src="http://placekitten.com/300/300">
+  </div>
+  <div class="column">
+    <h3>filter : sepia(100%)</h3>
+    <img class="sepiad" src="http://placekitten.com/300/300">
+  </div>
+</div>
+
+<div class="columns">
+  <div class="column">
+    <h3>filter : grayscale(100%)</h3>
+    <img class="grayed" src="http://placekitten.com/300/300">
+  </div>
+  <div class="column">
+    <h3>filter : invert(100%)</h3>
+    <img class="inverted" src="http://placekitten.com/300/300">
+  </div>
+</div>
+
+<h2>On elements</h2>
+<p>The password is <span class="blurred">hunter2</span></p>
+
+<style>
+img {
+  width: 100%;
+}
+
+.blurred {
+  -webkit-filter : blur(5px);
+  transition : -webkit-filter .5s;
+}
+.blurred:hover {
+  -webkit-filter : blur(0);
+}
+.inverted {
+  -webkit-filter : invert(100%);
+  transition : -webkit-filter .5s;
+}
+.inverted:hover {
+  -webkit-filter : invert(0);
+}
+.sepiad {
+  -webkit-filter : sepia(100%);
+  transition : -webkit-filter .5s;
+}
+.sepiad:hover {
+  -webkit-filter : sepia(0%);
+}
+.grayed {
+  -webkit-filter : grayscale(100%);
+  transition : -webkit-filter .5s;
+}
+.grayed:hover {
+  -webkit-filter : grayscale(0);
+}
+</style>
+{% endblock %}

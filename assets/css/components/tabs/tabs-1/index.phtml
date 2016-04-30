@@ -1,0 +1,33 @@
+<div class="tabbed-1">
+  <div class="tabs">
+      <div class="tab fatty" data-target="css">CSS</div>
+      <div class="tab fatty" data-target="html">HTML</div>
+      <div class="tab fatty" data-target="php">PHP</div>
+      <div class="tab fatty" data-target="scheme">Scheme</div>
+      <div class="tab fatty" data-target="python">Python</div>
+  </div>
+
+  <div class="tabs-content fatty">
+    <div class="tab-content" data-hit="css">
+      CSS content
+    </div>
+    <div class="tab-content" data-hit="html">
+      HTML content
+    </div>
+    <div class="tab-content" data-hit="php">
+      PHP stuff
+    </div>
+    <div class="tab-content" data-hit="scheme">
+      Scheme stuff
+    </div>
+    <div class="tab-content" data-hit="python">
+      Python stuff
+    </div>
+  </div>
+</div>
+<script>
+  $('.tab').click(function(){
+      $('.tab-content').hide();
+      $('.tab-content[data-hit=' + $(this).data('target') + ']').show();
+  });
+</script>

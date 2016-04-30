@@ -1,0 +1,29 @@
+.tabbed-1 .tabs {
+  display : flex;
+  text-align: center;
+  border:1px solid black;
+  border-radius : 5px;
+}
+.tabbed-1 .tab {
+  flex: 1;
+  transition: background-color .5s;
+  background-color: white;
+}
+.tabbed-1 .tab:hover {
+  background: #cbb;
+  cursor: pointer;
+}
+.tabbed-1 .tab + .tab {
+  border-left: 1px solid black;
+}
+.tabbed-1 .tabs-content {
+  margin-top :10px;
+  border:1px solid black;
+  border-radius : 5px;
+}
+.tabbed-1 .tab-content {
+  display: none;
+}
+.tabbed-1 .fatty{
+  padding:10px;
+}
