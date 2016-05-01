@@ -13,6 +13,7 @@ body {
   margin : 0
 }
 main {
+  display : block; /* hack for ie because it's wank*/
   width : 600px;
   margin : auto;
   margin-top : 25px;
