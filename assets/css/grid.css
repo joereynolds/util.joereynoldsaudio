@@ -1,7 +1,11 @@
 .columns {
     display : flex;
 }
-.columns:only-of-type {
+/* Give a margin bottom to the only columns on the page
+ * but only if it's not the last element. Otherwise,
+ * we'd get a stray margin bottom fucking things up.
+ */
+.columns:only-of-type:not(:last-child) {
     margin-bottom : 25px;
 }
 .columns .columns {
