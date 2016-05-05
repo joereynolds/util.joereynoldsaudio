@@ -1,6 +1,5 @@
 <?php
-namespace jra\models;
-include 'image.php';
+namespace jra\factory;
 
 class ImageFactory
 {
@@ -20,7 +19,7 @@ class ImageFactory
     {
         if (empty($this->images)) {
             foreach(scandir(static::PHOTODATA_IMAGE_DIR) as $file) {
-                $this->images[] = new Image(static::PHOTODATA_IMAGE_DIR . $file);
+                $this->images[] = new \jra\model\image(static::PHOTODATA_IMAGE_DIR . $file);
             }
         }
 

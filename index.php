@@ -6,8 +6,6 @@ require './vendor/autoload.php';
 
 //We need autoloading for these chaps
 include 'homeController.php';
-include './models/ImageFactory.php';
-include './models/FileManager.php';
 
 $app = new \Slim\App();
 
@@ -33,9 +31,9 @@ $app->get('/util', "jra\HomeController:dispatch");
 $app->map(['GET', 'POST'], '/util/photodata', function($request, $response, $args) {
     $path = './assets/images/photodata/';
     $filename = $_FILES['file']['name'];
-    $fileManager = new \jra\models\FileManager();
+    $fileManager = new \jra\model\FileManager();
     $fileManager->uploadFile($path . $filename);
-    $imageFactory = new \jra\models\ImageFactory();
+    $imageFactory = new \jra\factory\ImageFactory();
 
     //Don't see why I need to call this again even though it's
     //called in the constructor?
