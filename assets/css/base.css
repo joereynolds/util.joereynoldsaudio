@@ -13,13 +13,14 @@ html {
 body {
   padding : 0;
   margin : 0;
-  margin-bottom : 50px; /* Offsets our footer*/
+  margin-bottom : 50px; /* Offsets our footer */
 }
 main {
-  display : block; /* hack for ie because it's wank*/
+  display : block; /* hack for ie because it's wank */
   width : 600px;
   margin : auto;
   margin-top : 25px;
+  margin-bottom : 75px; /* 50px to offset the footer and 25 for spacing */
 }
 header {
     text-align : center;
