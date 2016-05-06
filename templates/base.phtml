@@ -1,12 +1,15 @@
 {% include 'head.phtml' %}
 <body>
-  <a class="nav-back" href="/">Home</a>
+  <header>
+    <a class="nav-back" href="/">Home</a>
+  </header>
   <main class="component">
     <section>
       <h1>{{title}}</h1>
       {% block content %}{% endblock %}
     </section>
   </main>
+  <footer></footer>
 </body>
 
 

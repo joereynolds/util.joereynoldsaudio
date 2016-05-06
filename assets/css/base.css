@@ -7,16 +7,43 @@ form {
 html {
   background : #f7f7f7;
   font-family : arial;
+  min-height : 100%;
+  position : relative;
 }
 body {
   padding : 0;
-  margin : 0
+  margin : 0;
+  margin-bottom : 50px; /* Offsets our footer*/
 }
 main {
   display : block; /* hack for ie because it's wank*/
   width : 600px;
   margin : auto;
   margin-top : 25px;
+}
+header {
+    text-align : center;
+    text-decoration : none;
+    font-size : 20px;
+    transition : none;
+    padding : 5px;
+    background : red;
+}
+header a {
+    color : white;
+}
+header a:hover {
+    color : #fff;
+}
+footer {
+    box-sizing : border-box;
+    background : red;
+    color : #fff;
+    padding : 25px;
+    position : absolute;
+    bottom : 0;
+    left : 0;
+    width : 100%;
 }
 h1, h2, h3, h4, h5 {
   color : red;
@@ -51,16 +78,4 @@ a {
 }
 a:hover{
   color : red;
-}
-.nav-back {
-    background : red;
-    color : white;
-    padding : 5px;
-    text-align : center;
-    text-decoration : none;
-    font-size : 20px;
-    transition : none;
-}
-.nav-back:hover {
-    color : #fff;
 }
