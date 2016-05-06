@@ -20,7 +20,7 @@ main {
   width : 600px;
   margin : auto;
   margin-top : 25px;
-  margin-bottom : 75px; /* 50px to offset the footer and 25 for spacing */
+  margin-bottom : 93px; /* 68px to offset the footer and 25 for spacing */
 }
 header {
     text-align : center;
@@ -30,9 +30,12 @@ header {
     padding : 5px;
     background : red;
 }
+footer a,
 header a {
+    display : inline-block;
     color : white;
 }
+footer a:hover,
 header a:hover {
     color : #fff;
 }
@@ -45,6 +48,12 @@ footer {
     bottom : 0;
     left : 0;
     width : 100%;
+}
+footer div {
+    text-align : right;
+}
+footer a + a {
+    margin-left : 5px;
 }
 h1, h2, h3, h4, h5 {
   color : red;
