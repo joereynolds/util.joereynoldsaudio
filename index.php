@@ -42,7 +42,7 @@ $app->map(['GET', 'POST'], '/util/photodata', function($request, $response, $arg
         [
             'title' => 'Exif Data Viewer',
             'images' => $imageFactory->images,
-            'stylesheet' => '/utilities/photodata/newstyle.css',
+            'stylesheet' => '/assets/css/components/cards/card-1/card-1.css',
             'sweetalertcss' => '/libraries/sweetalert/dist/sweetalert.css',
             'sweetalertjs' => '/libraries/sweetalert/dist/sweetalert.min.js',
             'script' => '/assets/js/photodata.js'
