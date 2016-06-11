@@ -1,9 +1,13 @@
 /* reset */
 * {
-    box-sizing : border-box;
+    box-sizing: border-box;
 }
 form {
-    margin-bottom : 0;
+    margin-bottom: 0;
+}
+body {
+    margin: 0;
+    padding: 0
 }
 /* end reset */
 
@@ -14,16 +18,12 @@ html {
   position : relative;
 }
 body {
-  padding : 0;
-  margin : 0;
-  margin-bottom : 50px; /* Offsets our footer */
+  width : 600px;
+  margin : auto;
 }
 main {
   display : block; /* hack for ie because it's wank */
-  width : 600px;
-  margin : auto;
   margin-top : 25px;
-  margin-bottom : 93px; /* 68px to offset the footer and 25 for spacing */
 }
 header {
     text-align : center;
@@ -33,33 +33,27 @@ header {
     padding : 5px;
     background : red;
 }
-footer a,
 header a {
     display : inline-block;
     color : white;
 }
-footer a:hover,
 header a:hover {
     color : #fff;
 }
 footer {
-    background : red;
-    color : #fff;
-    padding : 25px;
-    position : absolute;
-    bottom : 0;
-    left : 0;
-    width : 100%;
+    margin-top: 25px;
+    text-align:right
 }
-footer div {
-    text-align : right;
+footer a {
+    color: red;
+    display: inline-block;
 }
 footer a + a {
-    margin-left : 5px;
+    margin-left: 5px;
 }
 h1, h2, h3, h4, h5 {
-  color : red;
-  text-decoration : underline;
+  color: red;
+  text-decoration: underline;
   word-break: break-all;
 }
 input:not([type="radio"]):not([type="checkbox"]) {
