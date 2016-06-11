@@ -50,6 +50,16 @@ $app->map(['GET', 'POST'], '/util/photodata', function($request, $response, $arg
     );
 });
 
+$app->map(['GET', 'POST'], '/util/rawtext', function($request, $response, $args) {
+    return $this->view->render($response, 'rawtext.phtml',
+        [
+            'title' => 'Raw Text',
+            'input' => json_encode($_POST['input']),
+        ]
+    );
+});
+
+
 $app->get('/util/webgrep', function($request, $response, $args) {
     return $this->view->render($response, 'webgrep.phtml',
         ['title' => 'Grep The Web!']

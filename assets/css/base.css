@@ -63,7 +63,10 @@ input:not([type="radio"]):not([type="checkbox"]) {
     transition : background .5s, color .5s;
     border: 1px solid #ccc;
 }
-
+textarea {
+    width: 100%;
+    min-height: 100px;
+}
 select {
     background : transparent;
     display : block;

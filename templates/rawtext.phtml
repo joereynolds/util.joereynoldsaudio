@@ -1,0 +1,13 @@
+{% extends 'base.phtml' %}
+
+{% block content %}
+  <p>Displays carriage returns, newlines, and tab characters in your input.</p>
+  <form method="post">
+      <textarea name="input" placeholder="Enter your text here"></textarea>
+      <input type="submit">
+  </form>
+  {% if input != 'null' %}
+      <h1>Result</h1>
+      <label>{{ input }}</label>
+  {% endif %}
+{% endblock %}
