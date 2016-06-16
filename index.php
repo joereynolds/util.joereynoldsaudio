@@ -4,6 +4,9 @@
 //improved version of the same programme under the 'utilities' path
 require './vendor/autoload.php';
 
+use \jra\model\FileManager;
+use \jra\factory\ImageFactory;
+
 //We need autoloading for these chaps
 include 'homeController.php';
 
@@ -31,9 +34,9 @@ $app->get('/util', "jra\HomeController:dispatch");
 $app->map(['GET', 'POST'], '/util/photodata', function($request, $response, $args) {
     $path = './assets/images/photodata/';
     $filename = $_FILES['file']['name'];
-    $fileManager = new \jra\model\FileManager();
+    $fileManager = new FileManager();
     $fileManager->uploadFile($path . $filename);
-    $imageFactory = new \jra\factory\ImageFactory();
+    $imageFactory = new ImageFactory();
 
     //Don't see why I need to call this again even though it's
     //called in the constructor?
@@ -58,7 +61,6 @@ $app->map(['GET', 'POST'], '/util/rawtext', function($request, $response, $args)
         ]
     );
 });
-
 
 $app->get('/util/webgrep', function($request, $response, $args) {
     return $this->view->render($response, 'webgrep.phtml',
