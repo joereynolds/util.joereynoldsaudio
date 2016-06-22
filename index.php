@@ -78,7 +78,6 @@ $app->post('/util/imagemaker', function($request, $response, $args) {
     return $response->getBody()->write(var_dump($_POST));
 });
 
-//slightly hacky route for html experiments
 $app->get('/snippets/{snippet}', function($request, $response, $args) {
     return $this->view->render($response, $args['snippet'] . '.phtml',
         [
