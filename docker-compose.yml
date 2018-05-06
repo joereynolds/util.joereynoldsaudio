@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  php:
+    volumes:
+      - .:/var/www/html
+    build:
+      context: .
+    ports:
+      - "80:80"
